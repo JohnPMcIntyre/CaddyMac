@@ -1,4 +1,5 @@
 using CaddyMac.Data;
+using Microsoft.Maui.Storage;
 
 namespace CaddyMac.Views;
 
@@ -16,7 +17,16 @@ public partial class ViewRoundsPage : ContentPage
     {
         base.OnAppearing();
 
-        var rounds = await _database.GetRounds("test");
+        var username = Preferences.Get("current_user", null);
+
+        if (string.IsNullOrEmpty(username))
+        {
+            await DisplayAlert("Error", "No user logged in", "OK");
+            return;
+        }
+
+        var rounds = await _database.GetRounds(username);
+
         RoundsList.ItemsSource = rounds;
     }
 }

@@ -1,5 +1,6 @@
 using CaddyMac.Data;
 using CaddyMac.Models;
+using Microsoft.Maui.Storage;
 
 namespace CaddyMac.Views;
 
@@ -10,7 +11,6 @@ public partial class LoginPage : ContentPage
     public LoginPage(DatabaseService database)
     {
         InitializeComponent();
-
         _database = database;
     }
 
@@ -38,6 +38,8 @@ public partial class LoginPage : ContentPage
 
             await _database.AddUser(newUser);
 
+            Preferences.Set("current_user", username);
+
             await DisplayAlert("Success", "Account Created", "OK");
         }
         else
@@ -47,6 +49,8 @@ public partial class LoginPage : ContentPage
                 await DisplayAlert("Error", "Incorrect Password", "OK");
                 return;
             }
+
+            Preferences.Set("current_user", username);
 
             await DisplayAlert("Success", "Login Successful", "OK");
         }

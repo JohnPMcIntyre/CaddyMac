@@ -25,6 +25,11 @@ public partial class DashboardPage : ContentPage
 
     private async void OnLogout(object sender, EventArgs e)
     {
-        await Navigation.PopToRootAsync();
+        // Clear session
+        Preferences.Remove("current_user");
+
+        // Reset app to login screen
+        Application.Current.MainPage =
+            new NavigationPage(new LoginPage(_database));
     }
 }

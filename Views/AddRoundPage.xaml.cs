@@ -1,5 +1,6 @@
 using CaddyMac.Data;
 using CaddyMac.Models;
+using Microsoft.Maui.Storage;
 
 namespace CaddyMac.Views;
 
@@ -22,12 +23,26 @@ public partial class AddRoundPage : ContentPage
             return;
         }
 
+        if (!int.TryParse(ScoreEntry.Text, out int score))
+        {
+            await DisplayAlert("Error", "Score must be a number", "OK");
+            return;
+        }
+
+        var username = Preferences.Get("current_user", null);
+
+        if (string.IsNullOrEmpty(username))
+        {
+            await DisplayAlert("Error", "No user logged in", "OK");
+            return;
+        }
+
         var round = new Round
         {
             CourseName = CourseEntry.Text,
-            Score = int.Parse(ScoreEntry.Text),
+            Score = score,
             DatePlayed = DateTime.Now,
-            Username = "test" // temporary (we fix later)
+            Username = username
         };
 
         await _database.AddRound(round);
