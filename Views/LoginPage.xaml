@@ -1,0 +1,44 @@
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="CaddyMac.Views.LoginPage"
+    Title="Login">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="30"
+            Spacing="20"
+            VerticalOptions="Center">
+
+            <Label
+                Text="CaddyMac"
+                FontSize="36"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Track Your Golf Game"
+                FontSize="16"
+                HorizontalOptions="Center"
+                TextColor="Gray"/>
+
+            <Entry
+                x:Name="UsernameEntry"
+                Placeholder="Username" />
+
+            <Entry
+                x:Name="PasswordEntry"
+                Placeholder="Password"
+                IsPassword="True" />
+
+            <Button
+                Text="Login / Register"
+                HeightRequest="50"
+                Clicked="OnLoginClicked"/>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>
