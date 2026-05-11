@@ -51,6 +51,6 @@ public partial class LoginPage : ContentPage
             await DisplayAlert("Success", "Login Successful", "OK");
         }
 
-        await Navigation.PushAsync(new DashboardPage());
+        await Navigation.PushAsync(new DashboardPage(_database));
     }
 }

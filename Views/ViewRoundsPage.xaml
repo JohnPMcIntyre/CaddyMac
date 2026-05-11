@@ -1,0 +1,30 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CaddyMac.Views.ViewRoundsPage"
+             Title="My Rounds">
+
+    <VerticalStackLayout Padding="20" Spacing="10">
+
+        <Label Text="Your Rounds"
+               FontSize="26"
+               HorizontalOptions="Center"/>
+
+        <CollectionView x:Name="RoundsList">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="5" Padding="10">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding CourseName}" FontAttributes="Bold"/>
+                            <Label Text="{Binding Score}" />
+                            <Label Text="{Binding DatePlayed}" FontSize="12" TextColor="Gray"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </VerticalStackLayout>
+
+</ContentPage>

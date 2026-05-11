@@ -9,9 +9,14 @@
                FontSize="28"
                HorizontalOptions="Center" />
 
-        <Button Text="Add Round" />
-        <Button Text="View Rounds" />
-        <Button Text="Logout" />
+        <Button Text="Add Round"
+        Clicked="OnAddRound"/>
+
+        <Button Text="View Rounds"
+        Clicked="OnViewRounds"/>
+
+        <Button Text="Logout"
+        Clicked="OnLogout"/>
 
     </VerticalStackLayout>
 
